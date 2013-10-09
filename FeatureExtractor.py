@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
-# Created by Joe Ellis and Jessica Ouyang
-# Logistic Progression 
-# Natural Language Processing, Machine Learning, and the Web
+# Created by Joe Ellis 
+# DVMM Lab Columbia University
 
 import os,sys,shutil,getopt
 from nltk.tokenize.punkt import PunktWordTokenizer

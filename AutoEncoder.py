@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 # 
 # Created by Joe Ellis 
-# Logistic Progression 
-# Natural Language Processing, Machine Learning, and the Web
+# DVMM Lab Columbia University
 
 import os,sys,shutil
 import numpy as np

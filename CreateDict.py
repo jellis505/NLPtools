@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
-# Created by Joe Ellis and Jessica Ouyang 
-# Logistic Progression 
-# Natural Language Processing, Machine Learning, and the Web
+# Created by Joe Ellis 
+# DVMM Lab Columbia University
 
 import os,sys,shutil,getopt
 from nltk.tokenize.punkt import PunktWordTokenizer
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import math
+
 
 #Global Variable -- List of english stopwords
 stopwords_list = stopwords.words('english')
