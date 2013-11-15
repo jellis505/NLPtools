@@ -173,7 +173,7 @@ def run(argv):
     
     # This section parses the input variables to the script
     create_model = False
-    num_t = 100
+    num_t = 30
     return_closest_articles = False
     for opt,arg in opts:
         if opt in ('-h'):
@@ -202,13 +202,23 @@ def run(argv):
     if create_model:
         content = reader.ReadArticlesforTopic(topic_xml_file)
         # Read the articles and parsed them
-        documents = [b for (a,b) in content]
+        print len(content)
+        # We don't want to use any duplicate links
+        used_titles = []
+        documents = []
+        for title,desc in content:
+            if title not in used_titles:
+                documents.append(desc)
+                used_titles.append(title)
+
+        print len(documents)
+
         # Read the articles 
         lda_modeler = LDAmodel()
         lda = lda_modeler.TrainLDA(documents,num_t)
         lda_modeler.SaveModel(saved_model_file)
         lda_modeler.SaveDictionaryandCorpus(saved_dict_file,saved_corpus_file)
-        print lda.show_topics()
+        #print lda.show_topics()
     
     elif return_closest_articles:
         lda_modeler = LDAmodel(saved_model_file,saved_dict_file, saved_corpus_file)
@@ -216,12 +226,20 @@ def run(argv):
         
         # Let's look at the title and description for each article based on the query
         content = reader.ReadArticlesforTopic(topic_xml_file)
-        print indices
+
+       # We don't want to use any duplicate links
+        used_titles = []
+        documents = []
+        for title,desc in content:
+            if title not in used_titles:
+                documents.append(desc)
+                used_titles.append(title)
+
+        #print indices
         for index in indices:
-            print content[index[0]]
-        
-        
-        
+            print index
+            print documents[index[0]]
+       
         
 if __name__ == "__main__":
     run(sys.argv[1:])  
